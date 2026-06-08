@@ -11,7 +11,7 @@ const allShows = [
     date: "June 28, 2026",
     time: "7:00 PM AEST",
     venue: "Brisbane Entertainment Centre",
-    imageUrl: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800&q=80",
+    imageUrl: "/logos/logo-green-long.png",
     channelId: "488",
     price: "$29.99 PPV",
     featured: true,
@@ -22,7 +22,7 @@ const allShows = [
     date: "July 12, 2026",
     time: "6:30 PM AEST",
     venue: "Sydney Olympic Park",
-    imageUrl: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&q=80",
+    imageUrl: "/logos/logo-dark-long.png",
     channelId: "489",
     price: "$24.99 PPV",
   },
@@ -32,7 +32,7 @@ const allShows = [
     date: "July 19, 2026",
     time: "8:00 PM AEST",
     venue: "Melbourne Arena",
-    imageUrl: "https://images.unsplash.com/photo-1517438322307-e67111335449?w=600&q=80",
+    imageUrl: "/logos/logo-green-long.png",
     channelId: "490",
     price: "$19.99 PPV",
   },
@@ -42,7 +42,7 @@ const allShows = [
     date: "August 2, 2026",
     time: "7:00 PM AEST",
     venue: "Gold Coast Convention Centre",
-    imageUrl: "https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80",
+    imageUrl: "/logos/logo-dark-long.png",
     channelId: "491",
     price: "$29.99 PPV",
   },
@@ -52,7 +52,7 @@ const allShows = [
     date: "August 16, 2026",
     time: "7:30 PM AEST",
     venue: "Brisbane Convention Centre",
-    imageUrl: "https://images.unsplash.com/photo-1517438476312-10d79c077509?w=600&q=80",
+    imageUrl: "/logos/logo-green-long.png",
     channelId: "492",
     price: "$24.99 PPV",
   },
@@ -62,7 +62,7 @@ const allShows = [
     date: "September 6, 2026",
     time: "8:00 PM AEST",
     venue: "Perth Arena",
-    imageUrl: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=600&q=80",
+    imageUrl: "/logos/logo-dark-long.png",
     channelId: "493",
     price: "$19.99 PPV",
   },
@@ -73,7 +73,7 @@ export function ShowsPage() {
     <div className="min-h-screen pt-32 pb-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"

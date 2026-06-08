@@ -8,6 +8,7 @@ const footerLinks = [
       { href: "/shows", label: "Upcoming Shows" },
       { href: "/past-shows", label: "Past Shows" },
       { href: "/watch", label: "LCS TV 24/7" },
+      { href: "/pb", label: "LCS-PB BI" },
     ],
   },
   {
