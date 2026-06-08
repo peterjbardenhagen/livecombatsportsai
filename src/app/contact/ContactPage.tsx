@@ -16,7 +16,7 @@ export function ContactPage() {
     <div className="min-h-screen pt-32 pb-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
@@ -55,7 +55,7 @@ export function ContactPage() {
           <div className="lg:col-span-2">
             {submitted ? (
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={false}
                 animate={{ opacity: 1, scale: 1 }}
                 className="p-12 rounded-2xl glass border border-accent-green/20 text-center"
               >

@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, MapPin, Play } from "lucide-react";
 
@@ -28,9 +27,11 @@ export function EventCard({
   price,
   featured,
 }: EventCardProps) {
+  const isBrandAsset = imageUrl.startsWith("/logos/");
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
@@ -40,16 +41,16 @@ export function EventCard({
       }`}
     >
       {/* Image */}
-      <div className="relative aspect-video overflow-hidden">
-        <Image
+      <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-[#073b1e] via-bg-elevated to-bg-primary">
+        {/* eslint-disable-next-line @next/next/no-img-element -- Local brand assets render more reliably here than Next image placeholders. */}
+        <img
           src={imageUrl}
           alt={title}
-          fill
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
-          sizes={featured ? "(max-width: 1024px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
-          unoptimized
+          className={`absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-105 ${
+            isBrandAsset ? "object-contain p-8" : "object-cover"
+          }`}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-bg-card via-bg-card/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-card via-bg-card/10 to-transparent" />
         
         {/* Price Badge */}
         {price && (

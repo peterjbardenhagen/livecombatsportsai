@@ -14,7 +14,7 @@ function WatchContent() {
     <div className="min-h-screen pt-20">
       <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
@@ -100,7 +100,7 @@ function WatchContent() {
             {/* Chat Panel */}
             {chatOpen && (
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
+                initial={false}
                 animate={{ opacity: 1, x: 0 }}
                 className="glass-strong rounded-2xl border border-border-default p-4 h-[600px] flex flex-col"
               >

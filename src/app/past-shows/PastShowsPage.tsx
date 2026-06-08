@@ -11,7 +11,7 @@ const pastEvents = [
     date: "May 15, 2026",
     time: "7:00 PM AEST",
     venue: "Brisbane Entertainment Centre",
-    imageUrl: "https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80",
+    imageUrl: "/logos/logo-green-long.png",
     price: "$14.99 Replay",
   },
   {
@@ -20,7 +20,7 @@ const pastEvents = [
     date: "April 28, 2026",
     time: "6:30 PM AEST",
     venue: "Sydney Olympic Park",
-    imageUrl: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&q=80",
+    imageUrl: "/logos/logo-dark-long.png",
     price: "$14.99 Replay",
   },
   {
@@ -29,7 +29,7 @@ const pastEvents = [
     date: "April 10, 2026",
     time: "8:00 PM AEST",
     venue: "Melbourne Arena",
-    imageUrl: "https://images.unsplash.com/photo-1517438322307-e67111335449?w=600&q=80",
+    imageUrl: "/logos/logo-green-long.png",
     price: "$12.99 Replay",
   },
 ];
@@ -39,7 +39,7 @@ export function PastShowsPage() {
     <div className="min-h-screen pt-32 pb-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
