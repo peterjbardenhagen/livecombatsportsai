@@ -5,6 +5,11 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import * as THREE from "three";
 
+function seededRandom(seed: number) {
+  const value = Math.sin(seed * 12.9898) * 43758.5453;
+  return value - Math.floor(value);
+}
+
 function Particles({ count = 500 }: { count?: number }) {
   const mesh = useRef<THREE.Points>(null!);
   
@@ -16,11 +21,11 @@ function Particles({ count = 500 }: { count?: number }) {
     const yellow = new THREE.Color("#FFD700");
     
     for (let i = 0; i < count; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 10;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 6;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 3;
+      positions[i * 3] = (seededRandom(i + 1) - 0.5) * 10;
+      positions[i * 3 + 1] = (seededRandom(i + 101) - 0.5) * 6;
+      positions[i * 3 + 2] = (seededRandom(i + 201) - 0.5) * 3;
       
-      const mixed = green.clone().lerp(yellow, Math.random() * 0.5);
+      const mixed = green.clone().lerp(yellow, seededRandom(i + 301) * 0.5);
       colors[i * 3] = mixed.r;
       colors[i * 3 + 1] = mixed.g;
       colors[i * 3 + 2] = mixed.b;

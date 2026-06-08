@@ -1,16 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X, Flame, Tv, Play, Info, HelpCircle, Mail } from "lucide-react";
+import { Menu, Play, X } from "lucide-react";
 
 const navLinks = [
-  { href: "/shows", label: "Upcoming", icon: Flame },
-  { href: "/past-shows", label: "Past Shows", icon: Play },
-  { href: "/watch", label: "LCS TV", icon: Tv },
-  { href: "/about", label: "About", icon: Info },
-  { href: "/faq", label: "FAQ", icon: HelpCircle },
-  { href: "/contact", label: "Contact", icon: Mail },
+  { href: "/shows", label: "Upcoming" },
+  { href: "/past-shows", label: "Past Shows" },
+  { href: "/watch", label: "LCS TV" },
+  { href: "/about", label: "About" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {
@@ -18,85 +18,72 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 18);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "glass-strong shadow-card py-3"
-          : "bg-transparent py-5"
+      className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-bg-primary/82 shadow-card backdrop-blur-2xl" : "bg-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative">
-            <div className="absolute inset-0 bg-accent-green rounded-full blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
-            <Flame className="w-8 h-8 text-accent-yellow relative z-10" />
-          </div>
-          <div className="hidden sm:block">
-            <span className="text-lg font-display font-bold tracking-tight text-white">
-              LIVE<span className="text-accent-green">COMBAT</span>
-              <span className="text-accent-yellow">SPORTS</span>
-            </span>
-          </div>
+      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex items-center gap-3" aria-label="LiveCombatSports.ai home">
+          <span className="brand-wordmark">
+            Live<span>Combat</span>Sports.ai
+          </span>
         </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-1">
+        <div className="hidden items-center gap-1 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg text-text-secondary hover:text-white hover:bg-glass-bg transition-all duration-200 text-sm font-medium"
+              className="rounded-md px-3.5 py-2 text-sm font-semibold text-text-secondary transition-colors hover:bg-white/[0.055] hover:text-white"
             >
-              <link.icon className="w-4 h-4" />
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/shows"
-            className="ml-3 px-6 py-2.5 bg-accent-green hover:bg-accent-green-glow text-black font-bold rounded-lg transition-all duration-300 hover:shadow-glow-green text-sm uppercase tracking-wider"
-          >
+          <Link href="/shows" className="ml-2 inline-flex min-h-11 items-center gap-2 rounded-md bg-accent-green px-4 text-sm font-extrabold text-[#021108] shadow-glow-green transition-transform hover:-translate-y-0.5">
+            <Play className="h-4 w-4" fill="currentColor" />
             Watch Live
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden p-2 text-white hover:text-accent-green transition-colors"
-          aria-label="Toggle menu"
+          type="button"
+          onClick={() => setMobileOpen((value) => !value)}
+          className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-white/15 bg-white/[0.055] text-white lg:hidden"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
         >
-          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </nav>
 
-      {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden glass-strong border-t border-border-default mt-3 animate-slide-up">
-          <div className="px-4 py-4 space-y-1">
+        <div className="animate-slide-up border-t border-white/10 bg-bg-primary/95 px-5 pb-5 pt-2 backdrop-blur-2xl lg:hidden">
+          <div className="mx-auto grid max-w-7xl gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="flex items-center gap-3 px-4 py-3 rounded-lg text-text-secondary hover:text-white hover:bg-glass-bg transition-all"
+                className="rounded-md px-3 py-3 text-base font-semibold text-text-secondary hover:bg-white/[0.055] hover:text-white"
               >
-                <link.icon className="w-5 h-5" />
                 {link.label}
               </Link>
             ))}
             <Link
               href="/shows"
               onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-center gap-2 mt-3 px-4 py-3 bg-accent-green hover:bg-accent-green-glow text-black font-bold rounded-lg transition-all text-sm uppercase tracking-wider"
+              className="mt-2 inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-accent-green px-4 font-extrabold text-[#021108]"
             >
-              <Play className="w-4 h-4" /> Watch Live
+              <Play className="h-4 w-4" fill="currentColor" />
+              Watch Live
             </Link>
           </div>
         </div>

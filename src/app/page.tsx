@@ -1,45 +1,40 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Flame, Shield, Zap, Trophy, ArrowRight, Tv, Star } from "lucide-react";
-import { ParticleField } from "@/components/ParticleField";
+import {
+  ArrowRight,
+  BadgeCheck,
+  Brain,
+  Calendar,
+  ChevronRight,
+  CirclePlay,
+  Flame,
+  Gauge,
+  Play,
+  Radio,
+  ScanLine,
+  ShieldCheck,
+  Star,
+  Trophy,
+  Tv,
+  Zap,
+} from "lucide-react";
 import { CountdownTimer } from "@/components/CountdownTimer";
-import { EventCard } from "@/components/EventCard";
+import { ParticleField } from "@/components/ParticleField";
 
-const features = [
-  {
-    icon: Zap,
-    title: "Live PPV",
-    description: "Premium live pay-per-view events in crystal-clear HD. Never miss a punch.",
-  },
-  {
-    icon: Tv,
-    title: "24/7 Free Channel",
-    description: "LCS TV delivers non-stop combat sports action, completely free.",
-  },
-  {
-    icon: Shield,
-    title: "AI Fight Analyst",
-    description: "Advanced AI predictions and real-time fight analytics you won't find anywhere else.",
-  },
-  {
-    icon: Star,
-    title: "Exclusive Content",
-    description: "Behind-the-scenes access, fighter interviews, and original programming.",
-  },
-];
-
-const upcomingEvents = [
+const events = [
   {
     title: "Thunderdome 15: Night of Champions",
     promotion: "Thunderdome",
     date: "June 28, 2026",
     time: "7:00 PM AEST",
     venue: "Brisbane Entertainment Centre",
-    imageUrl: "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800&q=80",
-    channelId: "488",
     price: "$29.99 PPV",
+    channel: "Channel 488",
+    image:
+      "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1200&q=85",
     featured: true,
   },
   {
@@ -48,9 +43,10 @@ const upcomingEvents = [
     date: "July 12, 2026",
     time: "6:30 PM AEST",
     venue: "Sydney Olympic Park",
-    imageUrl: "https://images.unsplash.com/photo-1555597673-b21d5c935865?w=600&q=80",
-    channelId: "489",
     price: "$24.99 PPV",
+    channel: "Channel 489",
+    image:
+      "https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&w=900&q=85",
   },
   {
     title: "Nemesis Muaythai: Clash of Titans",
@@ -58,247 +54,347 @@ const upcomingEvents = [
     date: "July 19, 2026",
     time: "8:00 PM AEST",
     venue: "Melbourne Arena",
-    imageUrl: "https://images.unsplash.com/photo-1517438322307-e67111335449?w=600&q=80",
-    channelId: "490",
     price: "$19.99 PPV",
-  },
-  {
-    title: "Thunderdome 16: Summer Showdown",
-    promotion: "Thunderdome",
-    date: "August 2, 2026",
-    time: "7:00 PM AEST",
-    venue: "Gold Coast Convention Centre",
-    imageUrl: "https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=600&q=80",
-    channelId: "491",
-    price: "$29.99 PPV",
+    channel: "Channel 490",
+    image:
+      "https://images.unsplash.com/photo-1517438322307-e67111335449?auto=format&fit=crop&w=900&q=85",
   },
 ];
 
 const stats = [
-  { value: "500+", label: "Live Events" },
-  { value: "50K+", label: "Subscribers" },
-  { value: "24/7", label: "Free Channel" },
-  { value: "4K", label: "HD Quality" },
+  { value: "500+", label: "Live events streamed" },
+  { value: "24/7", label: "Free combat channel" },
+  { value: "4K", label: "Streaming ready" },
+  { value: "AI", label: "Fight intelligence" },
 ];
 
+const platform = [
+  {
+    icon: Radio,
+    title: "Live PPV Without Friction",
+    text: "Purpose-built event pages, countdowns, fight-card hierarchy, and embedded stream paths for premium combat broadcasts.",
+  },
+  {
+    icon: Tv,
+    title: "LCS TV, Always On",
+    text: "A 24/7 free channel for replays, interviews, training rooms, weigh-ins, and original fight programming.",
+  },
+  {
+    icon: Brain,
+    title: "AI Fight Analyst",
+    text: "Prediction layers, momentum reads, round-by-round signals, and contextual insight designed to enhance the viewing experience.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Promotion-Grade Delivery",
+    text: "High-trust design, mobile-first ticket paths, SEO-ready event content, and a premium broadcast surface for serious promotions.",
+  },
+];
+
+const analystSignals = [
+  { label: "Pressure index", value: "87", trend: "+12%" },
+  { label: "Counter window", value: "0.42s", trend: "tight" },
+  { label: "Output pace", value: "64/min", trend: "+8%" },
+  { label: "Momentum", value: "Red", trend: "rising" },
+];
+
+function FadeIn({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 26 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.7, delay, ease: [0.19, 1, 0.22, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+function HeroPlayer() {
+  return (
+    <motion.div
+      initial={false}
+      animate={{ opacity: 1, scale: 1, x: 0 }}
+      className="hero-player"
+    >
+      <div className="player-topbar">
+        <span className="live-dot" />
+        <span>Live Preview</span>
+        <span className="ml-auto">LCS Broadcast Engine</span>
+      </div>
+      <div className="player-screen">
+        <Image
+          src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1200&q=90"
+          alt="Live combat sports broadcast preview"
+          fill
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          priority
+        />
+        <div className="player-vignette" />
+        <div className="broadcast-scan" />
+        <button className="play-button" aria-label="Play featured stream preview">
+          <Play className="h-6 w-6" fill="currentColor" />
+        </button>
+        <div className="player-event">
+          <p>Thunderdome 15</p>
+          <h2>Night of Champions</h2>
+          <span>Brisbane Entertainment Centre / June 28</span>
+        </div>
+      </div>
+      <div className="player-meta">
+        <CountdownTimer targetDate="2026-06-28T19:00:00+10:00" label="Next Bell" />
+      </div>
+    </motion.div>
+  );
+}
+
+function EventTile({ event, index }: { event: (typeof events)[number]; index: number }) {
+  return (
+    <FadeIn delay={index * 0.08} className={event.featured ? "lg:col-span-2" : ""}>
+      <Link href="/shows" className={`event-tile ${event.featured ? "event-tile-featured" : ""}`}>
+        <div className="event-media">
+          <Image src={event.image} alt={event.title} fill sizes="(max-width: 1024px) 100vw, 50vw" />
+          <span className="event-price">{event.price}</span>
+        </div>
+        <div className="event-content">
+          <div className="event-kicker">
+            <span>{event.promotion}</span>
+            <span>{event.channel}</span>
+          </div>
+          <h3>{event.title}</h3>
+          <div className="event-details">
+            <span>
+              <Calendar className="h-4 w-4" />
+              {event.date} / {event.time}
+            </span>
+            <span>{event.venue}</span>
+          </div>
+          <span className="event-action">
+            Open event
+            <ChevronRight className="h-4 w-4" />
+          </span>
+        </div>
+      </Link>
+    </FadeIn>
+  );
+}
+
 export default function HomePage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "LiveCombatSports.ai",
+    url: "https://livecombatsportsai.vercel.app/",
+    publisher: {
+      "@type": "Organization",
+      name: "Digital Response",
+      url: "https://www.digitalresponse.com.au/",
+    },
+    potentialAction: {
+      "@type": "WatchAction",
+      target: "https://livecombatsportsai.vercel.app/shows",
+      name: "Watch live combat sports events",
+    },
+  };
+
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <section className="hero-stage">
         <ParticleField />
-        <div className="absolute inset-0 bg-radial-green" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-bg-primary/50 to-bg-primary" />
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Text */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-accent-green/20 mb-8">
-                <Zap className="w-4 h-4 text-accent-yellow" fill="currentColor" />
-                <span className="text-xs font-bold uppercase tracking-widest text-accent-green">
-                  Premium Combat Sports
-                </span>
-              </div>
-
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display font-bold leading-[0.95] tracking-tight">
-                <span className="text-white">Where</span>{" "}
-                <span className="text-gradient-green">Legends</span>
-                <br />
-                <span className="text-gradient-yellow">Are Made</span>
-              </h1>
-
-              <p className="mt-6 text-lg text-text-secondary leading-relaxed max-w-lg">
-                Experience the raw power, precision, and adrenaline of live combat sports.
-                Stream the biggest fights in HD with AI-powered insights you can&apos;t get anywhere else.
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="/shows"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-accent-green hover:bg-accent-green-glow text-black font-bold rounded-xl transition-all duration-300 hover:shadow-glow-green text-base group"
-                >
-                  <Flame className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  Watch Live Now
-                </Link>
-                <Link
-                  href="/past-shows"
-                  className="inline-flex items-center gap-2 px-8 py-4 glass border border-border-default hover:border-accent-green/30 text-white font-bold rounded-xl transition-all duration-300 text-base group"
-                >
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  Browse Past Shows
-                </Link>
-              </div>
-
-              {/* Stats */}
-              <div className="mt-12 grid grid-cols-4 gap-6">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="text-center">
-                    <div className="text-2xl sm:text-3xl font-display font-bold text-white">
-                      {stat.value}
-                    </div>
-                    <div className="text-[10px] sm:text-xs text-text-muted uppercase tracking-wider mt-1">
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Hero Visual + Countdown */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
-              className="relative"
-            >
-              {/* Glow orbs */}
-              <div className="absolute -top-20 -left-20 w-64 h-64 bg-accent-green/10 rounded-full blur-3xl" />
-              <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-accent-yellow/5 rounded-full blur-3xl" />
-
-              {/* Featured fight card */}
-              <div className="relative glass-strong rounded-3xl border border-border-default overflow-hidden shadow-card-hover">
-                <div className="aspect-[4/3] bg-gradient-to-br from-bg-elevated to-bg-secondary p-8 flex flex-col justify-end">
-                  <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-accent-green via-transparent to-transparent" />
-                  
-                  <div className="relative">
-                    <CountdownTimer
-                      targetDate="2026-06-28T19:00:00+10:00"
-                      label="Next Event In"
-                    />
-                    <div className="mt-6">
-                      <h2 className="text-2xl font-display font-bold text-white">
-                        Thunderdome 15
-                      </h2>
-                      <p className="mt-1 text-text-secondary">Night of Champions</p>
-                      <p className="mt-4 text-xs text-text-muted uppercase tracking-widest">
-                        Brisbane Entertainment Centre &bull; June 28
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="relative py-24 bg-bg-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="hero-backdrop" />
+        <div className="hero-grid max-w-7xl">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            initial={false}
+            animate={{ opacity: 1, y: 0 }}
+            className="hero-copy"
           >
-            <span className="text-sm font-bold uppercase tracking-widest text-accent-green">
-              Why LCS
-            </span>
-            <h2 className="mt-4 text-4xl sm:text-5xl font-display font-bold text-white">
-              Next-Level <span className="text-gradient-green">Experience</span>
-            </h2>
-            <p className="mt-4 text-text-secondary max-w-xl mx-auto">
-              Built for the modern fight fan. Every feature designed to bring you closer to the action.
+            <h1>Stream the fight. Read the moment.</h1>
+            <p>
+              LiveCombatSports.ai is the premium streaming home for live PPV combat events,
+              always-on fight programming, and AI-powered analysis built for the modern fight fan.
             </p>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((f, i) => (
-              <motion.div
-                key={f.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group p-6 rounded-2xl glass border border-border-default hover:border-accent-green/20 transition-all duration-500 hover:shadow-card-hover"
-              >
-                <div className="w-12 h-12 rounded-xl bg-accent-green/10 flex items-center justify-center mb-5 group-hover:bg-accent-green/20 transition-colors">
-                  <f.icon className="w-6 h-6 text-accent-green" />
-                </div>
-                <h3 className="text-lg font-display font-bold text-white mb-2">{f.title}</h3>
-                <p className="text-text-muted text-sm leading-relaxed">{f.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Upcoming Events Section */}
-      <section className="relative py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex items-end justify-between mb-12"
-          >
-            <div>
-              <span className="text-sm font-bold uppercase tracking-widest text-accent-green">
-                Fight Card
-              </span>
-              <h2 className="mt-4 text-4xl sm:text-5xl font-display font-bold text-white">
-                Upcoming <span className="text-gradient-yellow">Events</span>
-              </h2>
+            <div className="hero-actions">
+              <Link href="/shows" className="btn-primary">
+                <CirclePlay className="h-5 w-5" fill="currentColor" />
+                Watch Live
+              </Link>
+              <Link href="/watch" className="btn-secondary">
+                Open LCS TV
+                <ArrowRight className="h-5 w-5" />
+              </Link>
             </div>
-            <Link
-              href="/shows"
-              className="hidden sm:inline-flex items-center gap-2 text-accent-green hover:text-accent-green-glow font-bold text-sm transition-colors group"
-            >
-              View All Events
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            <dl className="hero-stats">
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <dt>{stat.value}</dt>
+                  <dd>{stat.label}</dd>
+                </div>
+              ))}
+            </dl>
           </motion.div>
+          <HeroPlayer />
+        </div>
+      </section>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {upcomingEvents.map((event, i) => (
-              <EventCard key={i} {...event} />
-            ))}
+      <section className="section-band section-events">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+          <div className="section-heading">
+            <FadeIn>
+              <h2>Upcoming premium fight nights</h2>
+            </FadeIn>
+            <FadeIn delay={0.08}>
+              <p>
+                Event pages designed to convert attention into buys, with broadcast-grade visuals,
+                clear timing, and a direct path into the stream.
+              </p>
+            </FadeIn>
           </div>
-
-          <div className="mt-8 text-center sm:hidden">
-            <Link
-              href="/shows"
-              className="inline-flex items-center gap-2 text-accent-green font-bold"
-            >
-              View All Events <ArrowRight className="w-4 h-4" />
-            </Link>
+          <div className="event-grid">
+            {events.map((event, index) => (
+              <EventTile key={event.title} event={event} index={index} />
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative py-24 bg-bg-secondary overflow-hidden">
-        <div className="absolute inset-0 bg-radial-green" />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="glass-strong rounded-3xl border border-accent-green/20 p-12 sm:p-16"
-          >
-            <Trophy className="w-16 h-16 text-accent-yellow mx-auto mb-6" />
-            <h2 className="text-3xl sm:text-5xl font-display font-bold text-white">
-              Ready for <span className="text-gradient-green">Battle</span>?
-            </h2>
-            <p className="mt-4 text-lg text-text-secondary max-w-lg mx-auto">
-              Join thousands of fight fans. Get access to live PPV events, exclusive content, and
-              AI-powered fight analysis.
+      <section className="section-band section-analyst">
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
+          <FadeIn className="analyst-copy">
+            <div className="section-mark">
+              <Brain className="h-5 w-5" />
+              AI Fight Analyst
+            </div>
+            <h2>Insight that moves at fight speed.</h2>
+            <p>
+              LCS layers fight intelligence over the broadcast experience: pressure reads,
+              momentum shifts, pacing changes, and predictive context that helps fans understand
+              why a round is turning before the scorecard catches up.
             </p>
-            <Link
-              href="/shows"
-              className="mt-8 inline-flex items-center gap-2 px-10 py-5 bg-accent-green hover:bg-accent-green-glow text-black font-bold rounded-xl transition-all duration-300 hover:shadow-glow-intense text-lg group"
-            >
-              <Flame className="w-6 h-6 group-hover:scale-110 transition-transform" />
-              Join the Action
+            <Link href="/about" className="text-link">
+              Explore the platform
+              <ArrowRight className="h-4 w-4" />
             </Link>
-          </motion.div>
+          </FadeIn>
+          <FadeIn delay={0.1} className="analyst-panel">
+            <div className="analyst-video">
+              <Image
+                src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=1200&q=85"
+                alt="Combat sports athlete in broadcast lighting"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="heatmap">
+                <span />
+                <span />
+                <span />
+              </div>
+            </div>
+            <div className="signal-grid">
+              {analystSignals.map((signal) => (
+                <div key={signal.label} className="signal-card">
+                  <span>{signal.label}</span>
+                  <strong>{signal.value}</strong>
+                  <em>{signal.trend}</em>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
         </div>
+      </section>
+
+      <section className="section-band section-platform">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+          <div className="section-heading section-heading-left">
+            <FadeIn>
+              <h2>A streaming platform built for combat.</h2>
+            </FadeIn>
+            <FadeIn delay={0.08}>
+              <p>
+                From PPV event launches to 24/7 content channels, LiveCombatSports.ai gives
+                promoters and fans a premium digital fight-night home.
+              </p>
+            </FadeIn>
+          </div>
+          <div className="platform-grid">
+            {platform.map((item, index) => (
+              <FadeIn key={item.title} delay={index * 0.06}>
+                <article className="platform-card">
+                  <item.icon className="h-6 w-6" />
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </article>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-band section-control-room">
+        <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+          <FadeIn className="control-room">
+            <div className="control-copy">
+              <div className="section-mark">
+                <ScanLine className="h-5 w-5" />
+                Broadcast Control
+              </div>
+              <h2>Every screen feels like fight night.</h2>
+              <p>
+                Cinematic media, fast event discovery, responsive playback surfaces, and a
+                restrained high-tech system give the product a premium signature without losing
+                usability.
+              </p>
+            </div>
+            <div className="control-stack">
+              {[
+                ["Stream health", "99.98%", Gauge],
+                ["Replay library", "On demand", Star],
+                ["Promoter trust", "Verified", BadgeCheck],
+                ["Fight-night energy", "Live", Flame],
+              ].map(([label, value, Icon]) => (
+                <div key={label as string} className="control-row">
+                  <Icon className="h-5 w-5" />
+                  <span>{label as string}</span>
+                  <strong>{value as string}</strong>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      <section className="section-band final-cta">
+        <FadeIn className="mx-auto max-w-4xl px-5 text-center sm:px-6 lg:px-8">
+          <Trophy className="mx-auto h-12 w-12 text-accent-yellow" />
+          <h2>Bring the next combat audience online.</h2>
+          <p>
+            Watch live PPV events, discover past shows, and tune into LCS TV from a platform
+            designed to make every bout feel premium.
+          </p>
+          <div className="hero-actions justify-center">
+            <Link href="/shows" className="btn-primary">
+              <Zap className="h-5 w-5" />
+              View upcoming shows
+            </Link>
+            <Link href="/contact" className="btn-secondary">
+              Contact LCS
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+          </div>
+        </FadeIn>
       </section>
     </>
   );
