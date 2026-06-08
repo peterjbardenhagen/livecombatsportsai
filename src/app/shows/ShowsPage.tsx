@@ -78,14 +78,14 @@ export function ShowsPage() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-accent-green/20 mb-6">
-            <Flame className="w-4 h-4 text-accent-yellow" fill="currentColor" />
-            <span className="text-xs font-bold uppercase tracking-widest text-accent-green">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-primary/20 mb-6">
+            <Flame className="w-4 h-4 text-primary" fill="currentColor" />
+            <span className="text-xs font-bold uppercase tracking-widest text-primary">
               Fight Card
             </span>
           </div>
           <h1 className="text-4xl sm:text-6xl font-display font-bold text-white">
-            Upcoming <span className="text-gradient-green">Events</span>
+            Upcoming <span className="text-gradient-primary">Events</span>
           </h1>
           <p className="mt-4 text-text-secondary max-w-lg mx-auto">
             Browse all upcoming live combat sports events. Purchase PPV access and watch in HD.

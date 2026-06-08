@@ -41,25 +41,25 @@ export function CountdownTimer({ targetDate, label, className = "" }: CountdownT
   return (
     <div className={className}>
       {label && (
-        <p className="text-sm font-bold uppercase tracking-widest text-accent-green mb-4">
+        <p className="text-xs sm:text-sm font-black uppercase tracking-widest text-primary mb-4">
           {label}
         </p>
       )}
-      <div className="flex gap-3">
+      <div className="flex gap-2 sm:gap-3 md:gap-4">
         {timeBlocks.map((block, i) => (
-          <div key={block.label} className="flex items-center gap-3">
+          <div key={block.label} className="flex items-center gap-2 sm:gap-3">
             <div className="flex flex-col items-center">
-              <div className="w-16 sm:w-20 h-16 sm:h-20 rounded-xl glass-strong border border-border-default flex items-center justify-center">
-                <span className="text-2xl sm:text-3xl font-display font-bold text-white tabular-nums">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-lg sm:rounded-xl glass-strong border border-border-default flex items-center justify-center">
+                <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-display font-black text-white tabular-nums">
                   {String(block.value).padStart(2, "0")}
                 </span>
               </div>
-              <span className="mt-2 text-[10px] sm:text-xs font-bold uppercase tracking-widest text-text-muted">
+              <span className="mt-1.5 sm:mt-2 text-[9px] sm:text-xs md:text-sm font-black uppercase tracking-widest text-text-muted">
                 {block.label}
               </span>
             </div>
             {i < timeBlocks.length - 1 && (
-              <span className="text-2xl text-accent-green font-bold mt-[-1rem]">:</span>
+              <span className="text-lg sm:text-2xl md:text-3xl text-primary font-black mt-[-0.5rem] sm:mt-[-1rem]">:</span>
             )}
           </div>
         ))}

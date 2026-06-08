@@ -36,7 +36,7 @@ function WatchContent() {
                 onClick={() => setChatOpen(!chatOpen)}
                 className={`p-3 rounded-xl transition-all ${
                   chatOpen
-                    ? "bg-accent-green text-black"
+                    ? "bg-primary text-[#0D0D0D]"
                     : "glass border border-border-default text-text-secondary hover:text-white"
                 }`}
               >
@@ -68,7 +68,7 @@ function WatchContent() {
                 {/* Overlay when not playing */}
                 <div className="absolute inset-0 flex items-center justify-center bg-bg-primary/60 group cursor-pointer">
                   <div className="text-center">
-                    <div className="w-20 h-20 rounded-full bg-accent-green flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-glow-intense animate-glow-pulse">
+                    <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform shadow-glow-primary animate-glow-pulse">
                       <Play className="w-8 h-8 text-white ml-1" fill="white" />
                     </div>
                     <p className="text-white font-display font-bold text-xl">
@@ -84,8 +84,8 @@ function WatchContent() {
               {/* Stream Info */}
               <div className="mt-4 p-4 rounded-xl glass border border-border-default">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-accent-green/10 flex items-center justify-center">
-                    <Brain className="w-5 h-5 text-accent-green" />
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Brain className="w-5 h-5 text-primary" />
                   </div>
                   <div>
                     <h3 className="text-sm font-bold text-white">AI Fight Analyst Active</h3>
@@ -105,14 +105,14 @@ function WatchContent() {
                 className="glass-strong rounded-2xl border border-border-default p-4 h-[600px] flex flex-col"
               >
                 <h3 className="text-sm font-bold text-white mb-4 flex items-center gap-2">
-                  <MessageSquare className="w-4 h-4 text-accent-green" />
+                  <MessageSquare className="w-4 h-4 text-primary" />
                   Live Chat
                 </h3>
                 <div className="flex-1 flex items-center justify-center text-text-muted text-sm">
                   <p className="text-center">
                     Chat coming soon.
                     <br />
-                    <span className="text-accent-green">AI-powered moderation enabled.</span>
+                    <span className="text-primary">AI-powered moderation enabled.</span>
                   </p>
                 </div>
               </motion.div>
@@ -129,7 +129,7 @@ export function WatchPage() {
     <Suspense
       fallback={
         <div className="min-h-screen pt-32 flex items-center justify-center">
-          <div className="w-12 h-12 border-4 border-accent-green/30 border-t-accent-green rounded-full animate-spin" />
+          <div className="w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin" />
         </div>
       }
     >

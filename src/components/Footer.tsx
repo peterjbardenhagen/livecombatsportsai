@@ -36,7 +36,7 @@ const socials = [
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/10 bg-[#050706]">
+      <footer className="relative border-t border-white/10 bg-[#0D0D0D]">
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr]">
           <div>
@@ -50,7 +50,7 @@ export function Footer() {
               fight insight in one high-performance platform.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/shows" className="inline-flex min-h-11 items-center gap-2 rounded-md bg-accent-green px-4 text-sm font-extrabold text-[#021108]">
+              <Link href="/shows" className="inline-flex min-h-11 items-center gap-2 rounded-md bg-primary px-4 text-sm font-extrabold text-[#0D0D0D]">
                 <Play className="h-4 w-4" fill="currentColor" />
                 Watch Live
               </Link>
@@ -60,7 +60,7 @@ export function Footer() {
                     key={social.label}
                     href={social.href}
                     aria-label={social.label}
-                    className="grid h-11 w-11 place-items-center rounded-md border border-white/12 bg-white/[0.04] text-text-secondary transition-colors hover:border-accent-green/40 hover:text-accent-green-glow"
+                    className="grid h-11 w-11 place-items-center rounded-md border border-white/12 bg-white/[0.04] text-text-secondary transition-colors hover:border-primary/40 hover:text-primary-glow"
                   >
                     <social.icon className="h-4 w-4" />
                   </a>
@@ -100,7 +100,7 @@ export function Footer() {
               href="https://www.digitalresponse.com.au/"
               target="_blank"
               rel="noreferrer"
-              className="text-white underline decoration-accent-green/60 underline-offset-4 hover:text-accent-green-glow"
+              className="text-white underline decoration-primary/60 underline-offset-4 hover:text-primary-glow"
             >
               Digital Response
             </a>

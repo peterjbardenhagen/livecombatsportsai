@@ -22,11 +22,11 @@ export function AboutPage() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-bold uppercase tracking-widest text-accent-green">
+          <span className="text-sm font-bold uppercase tracking-widest text-primary">
             Our Story
           </span>
           <h1 className="mt-4 text-4xl sm:text-6xl font-display font-bold text-white">
-            About <span className="text-gradient-green">LCS</span>
+            About <span className="text-gradient-primary">LCS</span>
           </h1>
           <p className="mt-6 text-lg text-text-secondary max-w-2xl mx-auto leading-relaxed">
             LiveCombatSports was born from a passion for combat sports and a vision to make
@@ -43,10 +43,10 @@ export function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="p-8 rounded-2xl glass border border-border-default hover:border-accent-green/20 transition-all duration-500"
+              className="p-8 rounded-2xl glass border border-border-default hover:border-primary/20 transition-all duration-500"
             >
-              <div className="w-12 h-12 rounded-xl bg-accent-green/10 flex items-center justify-center mb-5">
-                <v.icon className="w-6 h-6 text-accent-green" />
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+                <v.icon className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-xl font-display font-bold text-white mb-3">{v.title}</h3>
               <p className="text-text-muted text-sm leading-relaxed">{v.text}</p>

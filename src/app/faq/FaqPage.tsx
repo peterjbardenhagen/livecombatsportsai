@@ -51,7 +51,7 @@ export function FaqPage() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-bold uppercase tracking-widest text-accent-green">
+          <span className="text-sm font-bold uppercase tracking-widest text-primary">
             Help Centre
           </span>
           <h1 className="mt-4 text-4xl sm:text-6xl font-display font-bold text-white">
@@ -79,7 +79,7 @@ export function FaqPage() {
                   {faq.q}
                 </span>
                 <ChevronDown
-                  className={`w-5 h-5 text-accent-green flex-shrink-0 transition-transform duration-300 ${
+                  className={`w-5 h-5 text-primary flex-shrink-0 transition-transform duration-300 ${
                     openIndex === i ? "rotate-180" : ""
                   }`}
                 />

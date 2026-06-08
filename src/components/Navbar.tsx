@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu, Play, X } from "lucide-react";
+import { Logo } from "./Logo";
 
 const navLinks = [
   { href: "/shows", label: "Upcoming" },
@@ -31,10 +32,8 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-3" aria-label="LiveCombatSports.ai home">
-          <span className="brand-wordmark">
-            Live<span>Combat</span>Sports.ai
-          </span>
+        <Link href="/" className="flex items-center gap-2" aria-label="LiveCombatSports home">
+          <Logo size="md" variant="full" />
         </Link>
 
         <div className="hidden items-center gap-1 lg:flex">
@@ -47,7 +46,7 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link href="/shows" className="ml-2 inline-flex min-h-11 items-center gap-2 rounded-md bg-accent-green px-4 text-sm font-extrabold text-[#021108] shadow-glow-green transition-transform hover:-translate-y-0.5">
+          <Link href="/shows" className="ml-2 inline-flex min-h-11 items-center gap-2 rounded-md bg-primary px-4 text-sm font-extrabold text-[#0D0D0D] shadow-glow-primary transition-transform hover:-translate-y-0.5">
             <Play className="h-4 w-4" fill="currentColor" />
             Watch Live
           </Link>
@@ -80,7 +79,7 @@ export function Navbar() {
             <Link
               href="/shows"
               onClick={() => setMobileOpen(false)}
-              className="mt-2 inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-accent-green px-4 font-extrabold text-[#021108]"
+              className="mt-2 inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-primary px-4 font-extrabold text-[#0D0D0D]"
             >
               <Play className="h-4 w-4" fill="currentColor" />
               Watch Live

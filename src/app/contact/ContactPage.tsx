@@ -21,7 +21,7 @@ export function ContactPage() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-bold uppercase tracking-widest text-accent-green">
+          <span className="text-sm font-bold uppercase tracking-widest text-primary">
             Get In Touch
           </span>
           <h1 className="mt-4 text-4xl sm:text-6xl font-display font-bold text-white">
@@ -44,7 +44,7 @@ export function ContactPage() {
                 key={item.label}
                 className="p-4 rounded-xl glass border border-border-default"
               >
-                <item.icon className="w-5 h-5 text-accent-green mb-2" />
+                <item.icon className="w-5 h-5 text-primary mb-2" />
                 <p className="text-xs text-text-muted uppercase tracking-wider">{item.label}</p>
                 <p className="text-sm text-white font-medium mt-0.5">{item.value}</p>
               </div>
@@ -57,10 +57,10 @@ export function ContactPage() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="p-12 rounded-2xl glass border border-accent-green/20 text-center"
+                className="p-12 rounded-2xl glass border border-primary/20 text-center"
               >
-                <div className="w-16 h-16 rounded-full bg-accent-green/10 flex items-center justify-center mx-auto mb-4">
-                  <Check className="w-8 h-8 text-accent-green" />
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <Check className="w-8 h-8 text-primary" />
                 </div>
                 <h2 className="text-2xl font-display font-bold text-white">Message Sent!</h2>
                 <p className="mt-2 text-text-secondary">
@@ -78,7 +78,7 @@ export function ContactPage() {
                     <input
                       type="text"
                       required
-                      className="w-full px-4 py-3 rounded-lg bg-bg-elevated border border-border-default text-white text-sm focus:outline-none focus:border-accent-green transition-colors"
+                      className="w-full px-4 py-3 rounded-lg bg-bg-elevated border border-border-default text-white text-sm focus:outline-none focus:border-primary transition-colors"
                       placeholder="John"
                     />
                   </div>
@@ -87,7 +87,7 @@ export function ContactPage() {
                     <input
                       type="text"
                       required
-                      className="w-full px-4 py-3 rounded-lg bg-bg-elevated border border-border-default text-white text-sm focus:outline-none focus:border-accent-green transition-colors"
+                      className="w-full px-4 py-3 rounded-lg bg-bg-elevated border border-border-default text-white text-sm focus:outline-none focus:border-primary transition-colors"
                       placeholder="Doe"
                     />
                   </div>
@@ -97,7 +97,7 @@ export function ContactPage() {
                   <input
                     type="email"
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-bg-elevated border border-border-default text-white text-sm focus:outline-none focus:border-accent-green transition-colors"
+                    className="w-full px-4 py-3 rounded-lg bg-bg-elevated border border-border-default text-white text-sm focus:outline-none focus:border-primary transition-colors"
                     placeholder="john@example.com"
                   />
                 </div>
@@ -105,7 +105,7 @@ export function ContactPage() {
                   <label className="block text-sm text-text-secondary mb-2">Phone</label>
                   <input
                     type="tel"
-                    className="w-full px-4 py-3 rounded-lg bg-bg-elevated border border-border-default text-white text-sm focus:outline-none focus:border-accent-green transition-colors"
+                    className="w-full px-4 py-3 rounded-lg bg-bg-elevated border border-border-default text-white text-sm focus:outline-none focus:border-primary transition-colors"
                     placeholder="+61 4XX XXX XXX"
                   />
                 </div>
@@ -114,13 +114,13 @@ export function ContactPage() {
                   <textarea
                     required
                     rows={4}
-                    className="w-full px-4 py-3 rounded-lg bg-bg-elevated border border-border-default text-white text-sm focus:outline-none focus:border-accent-green transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-lg bg-bg-elevated border border-border-default text-white text-sm focus:outline-none focus:border-primary transition-colors resize-none"
                     placeholder="How can we help?"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="flex items-center justify-center gap-2 w-full py-3.5 bg-accent-green hover:bg-accent-green-glow text-black font-bold rounded-xl transition-all duration-300 hover:shadow-glow-green"
+                  className="flex items-center justify-center gap-2 w-full py-3.5 bg-primary hover:bg-primary-glow text-[#0D0D0D] font-bold rounded-xl transition-all duration-300 hover:shadow-glow-primary"
                 >
                   <Send className="w-4 h-4" />
                   Send Message

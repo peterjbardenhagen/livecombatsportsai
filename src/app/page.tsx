@@ -121,10 +121,22 @@ function FadeIn({
 }
 
 function HeroPlayer() {
+  const [offsetY, setOffsetY] = React.useState(0);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setOffsetY(window.scrollY * 0.5);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <motion.div
       initial={false}
       animate={{ opacity: 1, scale: 1, x: 0 }}
+      style={{ transform: `translateY(${offsetY}px)` }}
       className="hero-player"
     >
       <div className="player-topbar">
@@ -378,7 +390,7 @@ export default function HomePage() {
 
       <section className="section-band final-cta">
         <FadeIn className="mx-auto max-w-4xl px-5 text-center sm:px-6 lg:px-8">
-          <Trophy className="mx-auto h-12 w-12 text-accent-yellow" />
+          <Trophy className="mx-auto h-12 w-12 text-primary" />
           <h2>Bring the next combat audience online.</h2>
           <p>
             Watch live PPV events, discover past shows, and tune into LCS TV from a platform
