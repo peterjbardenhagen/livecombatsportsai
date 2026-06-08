@@ -173,6 +173,309 @@ h6 {
   font-weight: 800;
 }
 
+.lcs-pb-page {
+  background:
+    radial-gradient(circle at 12% 12%, rgba(0, 166, 81, 0.16), transparent 30rem),
+    radial-gradient(circle at 88% 22%, rgba(255, 211, 77, 0.08), transparent 24rem),
+    #050706;
+}
+
+.pb-shell {
+  width: min(100% - 2rem, 1280px);
+  margin-inline: auto;
+  padding-top: 6rem;
+}
+
+.bi-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.bi-kpi,
+.bi-panel,
+.ledger-card {
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.26);
+}
+
+.bi-kpi {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.bi-kpi span {
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.bi-kpi strong {
+  color: #fff;
+  font-size: clamp(1.55rem, 2.5vw, 2.3rem);
+  line-height: 1;
+}
+
+.bi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.bi-panel {
+  padding: clamp(1.1rem, 2vw, 1.5rem);
+}
+
+.bi-panel-head h2,
+.ledger-head h2 {
+  color: #fff;
+  font-size: clamp(1.6rem, 2.6vw, 2.6rem);
+  font-weight: 850;
+  line-height: 1;
+}
+
+.bi-panel-head p {
+  margin-top: 0.6rem;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.bar-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.bar-row > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.45rem;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+
+.bar-row strong {
+  color: #fff;
+}
+
+.bar-track {
+  height: 0.7rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.bar-track > div {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--color-accent-green), var(--color-accent-yellow));
+}
+
+.effort-chart {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 0.7rem;
+  height: 230px;
+  margin-top: 1.5rem;
+  padding-top: 0.5rem;
+}
+
+.effort-point {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-width: 0;
+  gap: 0.55rem;
+}
+
+.effort-bars {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 0.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.effort-bars span {
+  display: block;
+  width: 0.55rem;
+  border-radius: 999px 999px 0 0;
+}
+
+.effort-bars .work {
+  background: var(--color-accent-yellow);
+}
+
+.effort-bars .reward {
+  background: var(--color-accent-green);
+}
+
+.effort-point small {
+  overflow: hidden;
+  color: var(--color-text-muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-align: center;
+  text-overflow: ellipsis;
+}
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.chart-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.chart-legend i {
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 999px;
+}
+
+.work-key {
+  background: var(--color-accent-yellow);
+}
+
+.reward-key {
+  background: var(--color-accent-green);
+}
+
+.burden-grid,
+.coverage-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.burden-grid > div,
+.coverage-list > div {
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.burden-grid strong,
+.coverage-list strong {
+  display: block;
+  color: #fff;
+  font-size: 1.65rem;
+  line-height: 1;
+}
+
+.burden-grid span,
+.coverage-list span {
+  display: block;
+  margin-top: 0.55rem;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 750;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.ledger-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: clamp(3rem, 7vw, 5rem);
+}
+
+.ledger-head .text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.evidence-ledger {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.ledger-card {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr) 190px;
+  gap: 1.25rem;
+  padding: 1rem;
+}
+
+.ledger-date span,
+.ledger-date strong,
+.ledger-money span,
+.ledger-money strong {
+  display: block;
+}
+
+.ledger-date span,
+.ledger-money span {
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.ledger-date strong {
+  margin-top: 0.45rem;
+  color: var(--color-accent-green-glow);
+}
+
+.ledger-card h3 {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 830;
+  line-height: 1.2;
+}
+
+.ledger-card p {
+  margin-top: 0.45rem;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  font-weight: 750;
+}
+
+.ledger-card ul {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.75rem;
+  padding-left: 1rem;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.ledger-money {
+  display: grid;
+  align-content: start;
+  gap: 0.45rem;
+  text-align: right;
+}
+
+.ledger-money strong {
+  color: #fff;
+}
+
 .animate-slide-up {
   animation: slide-up 0.35s var(--ease-out-expo) both;
 }
@@ -829,8 +1132,19 @@ h6 {
   }
 
   .event-grid,
-  .platform-grid {
+  .platform-grid,
+  .bi-kpi-grid,
+  .bi-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ledger-card {
+    grid-template-columns: 120px minmax(0, 1fr);
+  }
+
+  .ledger-money {
+    grid-column: 2;
+    text-align: left;
   }
 }
 
@@ -861,8 +1175,25 @@ h6 {
   .hero-stats,
   .event-grid,
   .signal-grid,
-  .platform-grid {
+  .platform-grid,
+  .bi-kpi-grid,
+  .bi-grid,
+  .burden-grid,
+  .coverage-list {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .ledger-head,
+  .ledger-card {
+    grid-template-columns: 1fr;
+  }
+
+  .ledger-head {
+    display: grid;
+  }
+
+  .ledger-money {
+    grid-column: auto;
   }
 
   .player-screen,
@@ -879,8 +1210,22 @@ h6 {
   .hero-stats,
   .event-grid,
   .signal-grid,
-  .platform-grid {
+  .platform-grid,
+  .bi-kpi-grid,
+  .bi-grid,
+  .burden-grid,
+  .coverage-list {
     grid-template-columns: 1fr;
+  }
+
+  .effort-chart {
+    gap: 0.42rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  .effort-point {
+    min-width: 1.4rem;
   }
 
   .section-band {

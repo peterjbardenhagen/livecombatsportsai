@@ -8,6 +8,7 @@ const navLinks = [
   { href: "/shows", label: "Upcoming" },
   { href: "/past-shows", label: "Past Shows" },
   { href: "/watch", label: "LCS TV" },
+  { href: "/pb", label: "LCS-PB" },
   { href: "/about", label: "About" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },

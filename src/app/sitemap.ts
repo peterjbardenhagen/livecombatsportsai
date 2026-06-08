@@ -3,7 +3,19 @@ import type { MetadataRoute } from "next";
 const baseUrl = "https://livecombatsportsai.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/shows", "/past-shows", "/watch", "/about", "/faq", "/contact"];
+  const routes = [
+    "",
+    "/shows",
+    "/past-shows",
+    "/watch",
+    "/pb",
+    "/about",
+    "/faq",
+    "/contact",
+    "/privacy",
+    "/terms",
+    "/refund",
+  ];
 
   return routes.map((route) => ({
     url: `${baseUrl}${route}`,
